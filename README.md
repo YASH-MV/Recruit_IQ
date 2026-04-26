@@ -7,15 +7,7 @@ sdk: streamlit
 sdk_version: 1.27.1
 app_file: src/app.py
 pinned: false
-license: mit
 ---
-
-<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/assets/logo.png?raw=true" width="100"/><br><br> 
-
-<a href="https://huggingface.co/spaces/sssingh/human-resource-data-analysis-streamlit"  target="_blank"><img src="https://img.shields.io/badge/click_here_to_open_streamlit_app-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a>
-
-<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/title.png?raw=true" width="1000" height="500" /> <br><br>
-
 # Human Resource Analysis
 In this `Data Analysis` project, we examine raw HR data to learn more about how organizational policies influence employee behaviors such as `attrition` and `job-satisfaction` plus staff `promotions` and `layoffs`. The company's human resources policies shall then be amended based on the insights obtained.
 
@@ -65,7 +57,7 @@ HR-DA01-REQ-10|Executive Committee <br> Rightsizing Team <br> Hiring & Retention
 ## Dataset
 * The HR department collects and maintains the dataset. The relevant employee-related data attributes are provided by HR as a CSV dataset, and. 
 * The dataset is anticipated to be evaluated and updated yearly in the same manner before being fed into the suggested data-analysis solution. 
-* The `input_data` folder in the project repository contains the [raw dataset](https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/input_data/raw_hr_data.csv).
+* The `input_data` folder in the project repository contains the
 * Along with raw data the HR departments has supplied the `business-rules` to be used to compute employee's `promotion-rate`, `retrenchment-rate` and `attrition-rate`
 
 |Data Item|Rule  
@@ -104,28 +96,18 @@ There are several graphics on each report dashboard, divided into expandable and
 #### 1. Executive Summary Dashboard [HR-DA01-SOL-1]:
 'Gender', 'Age', 'Marital Status', 'Department', and 'Work Experience' are all examined in this high-level summary dashboard. This dashboard includes the sections below...
 ##### *Gender & Age and Marital Status Statistics:* <br><br>
-<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/summary-01.png?raw=true" width="1000" height="500" /><br><br>
-
-
 ##### *Department & Work Experience:* <br><br>
-<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/summary-02.png?raw=true" width="1000" height="500" /><br><br>
-
 
 #### 2. Capacity Dashboard [HR-DA01-SOL-2]:
 This dashboard emphasizes the size and capabilities of the company's staff. This analysis will aid the business in its "rightsizing" decision in near future. This dashboard includes the sections below...
 ##### *Summary level & Department level promotion and layoffs statistics:* <br><br>
-<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/capacity-all.png?raw=true" width="1000" height="500" /><br><br>
-
   
 #### 3. Attrition Dashboard [HR-DA01-SOL-3]:
 This dashboard looks at the company's capacity for employee retention and determines what variables are at play if attrition rates are higher than anticipated. The corporation may change its practices to better manage attrition in light of the findings. <br><br>
  
-<img src="https://github.com/sssingh/human-resource-data-analysis-streamlit/blob/main/images/attrition-all.png?raw=true" width="1000" height="500" />
-
 
 ## How To Use
 ### Read-only direct access via the web (Recommended):
-<a href="https://huggingface.co/spaces/sssingh/human-resource-data-analysis-streamlit"  target="_blank"><img src="https://img.shields.io/badge/click_here_to_open_streamlit_app-f63366?style=for-the-badge&logo=streamlit&logoColor=black" /></a> <br>
 and explore the fully functional interactive report. <br><br>
 
 ### Run the application locally:
@@ -140,10 +122,6 @@ To run (and modify) the application locally follow below steps...
     streamlit run src/app.py  
     ```
 4. Copy and paste the `localhost:<port-no>` web-address displayed by above command in your browser to open and application.
-
-
-## License
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 ## Contact Me
 [![email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sunil@sunilssingh.me)
