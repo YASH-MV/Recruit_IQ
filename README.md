@@ -63,7 +63,7 @@ HR-DA01-REQ-10|Executive Committee <br> Rightsizing Team <br> Hiring & Retention
 |Data Item|Rule  
 |:--|:---
 | Promotion % Rate | [Count of to-be-promoted] = <br> &nbsp;&nbsp;&nbsp;&nbsp; (if [yrs-since-last-promotion] >= 10 yrs and [performance-rating] is > 2) <br> **[promotion-rate]** = [Count of to-be-promoted] / [total-employee]) * 100 
-| Retrenchment % Rate  | [Count of to-be-retrenched] = <br> &nbsp;&nbsp;&nbsp;&nbsp;(if [Not-to-be-promoted] and ((if [years-in-current-role] is between 3 to 10 years and [performance-rating] is > 2) <br> OR (If [years-in-current-role] is >= 10 years and [performance-rating] < 3)) <br> **[retrenchment-rate]** = [Count of to-be-retrenched] / [total-employee]) * 100
+| Retrenchment % Rate  | [Count of to-be-retrenched] = <br> &nbsp;&nbsp;&nbsp;&nbsp;(if [Not-to-be-promoted] and ((if [years-in-current-role] is between 3 to 10 years and [performance-rating] is < 2) <br> OR (If [years-in-current-role] is >= 10 years and [performance-rating] < 3)) <br> **[retrenchment-rate]** = [Count of to-be-retrenched] / [total-employee]) * 100
 | Attrition % Rate | **[attrition-rate]** = [Count of employee left] / [total-employee] * 100 
 
 ***Table-2 : Rate Computation Rules***
