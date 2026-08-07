@@ -4,7 +4,6 @@ on:
   push:
     branches: [master]
 
-  # To run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -16,7 +15,9 @@ jobs:
           fetch-depth: 0
           lfs: true
 
-      - name: Push to Hugging Face
+      - name: Push Subfolder to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://Yashraj64004:$HF_TOKEN@huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit master:main
+        run: |
+          git subtree split --prefix human-resource-data-analysis-streamlit -b hf-deploy
+          git push --force https://Yashraj64004:$HF_TOKEN@huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit hf-deploy:main
