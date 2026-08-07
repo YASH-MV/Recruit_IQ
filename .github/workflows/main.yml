@@ -19,5 +19,5 @@ jobs:
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          git subtree split --prefix human-resource-data-analysis-streamlit -b hf-deploy
-          git push --force https://Yashraj64004:$HF_TOKEN@huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit hf-deploy:main
+          SPLIT_SHA=$(git subtree split --prefix human-resource-data-analysis-streamlit)
+          git push --force https://Yashraj64004:$HF_TOKEN@huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit $SPLIT_SHA:refs/heads/main
