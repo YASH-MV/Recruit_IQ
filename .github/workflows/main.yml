@@ -1,9 +1,10 @@
 name: Sync to Hugging Face hub
+
 on:
   push:
-    branches: [main]
+    branches: [master]
 
-  # to run this workflow manually from the Actions tab
+  # To run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -14,7 +15,8 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-       - name: Push to Hugging Face
+
+      - name: Push to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://Yashraj64004:$HF_TOKEN@huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit main
+        run: git push --force https://Yashraj64004:$HF_TOKEN@huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit master:main
