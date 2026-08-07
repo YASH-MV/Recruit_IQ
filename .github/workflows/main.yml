@@ -14,10 +14,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Push to Hugging Face
-        uses: n3drason/deploy-to-hf-spaces@v1.2
-        with:
-          hf_token: ${{ secrets.HF_TOKEN }}
-          hf_username: Yashraj64004
-          hf_space_name: human-resource-data-analysis-streamlit
-          folder_path: human-resource-data-analysis-streamlit
+      - name: Push Subfolder to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          SPLIT_SHA=$(git subtree split --prefix human-resource-data-analysis-streamlit)
+          git push --force https://Yashraj64004:$HF_TOKEN@huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit $SPLIT_SHA:refs/heads/main
