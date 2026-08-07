@@ -134,96 +134,80 @@ def _ensure_draft_state():
 
 
 
+import textwrap
+
 def inject_global_css():
-    """Inject CSS styles for the interview session page with error handling.
+    """Inject CSS styles cleanly without markdown parsing bugs."""
     
-    Runs only once per session using st.session_state flag to avoid redundant injections.
+    # Temporarily comment out session_state check while testing to ensure it runs
+    # if st.session_state.get('_css_injected', False):
+    #     return
     
-    Includes:
-    - Google Font (Inter) for consistent typography
-    - Floating card styles for forms and expanders
-    - Two-column responsive layout for candidate entry
-    - Sticky right-side action panel styling
-    - Block container padding to avoid overlap
-    - Safety rule to hide any accidentally rendered CSS text
-    
-    Wrapped in try/except to fail gracefully.
+    css_code = """
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+    /* Global font */
+    html, body, .main, .block-container {
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    /* Floating candidate cards / expanders */
+    div[data-testid="stExpander"] > div:first-child {
+        background: #ffffff !important;
+        border-radius: 12px !important;
+        box-shadow: 0 10px 30px rgba(36, 37, 38, 0.08) !important;
+        padding: 12px 14px !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* Make form containers look like cards */
+    div[data-testid="stForm"] {
+        background: #fff !important;
+        padding: 14px !important;
+        border-radius: 10px !important;
+        box-shadow: 0 8px 22px rgba(36,37,38,0.06) !important;
+        margin-bottom: 16px !important;
+    }
+
+    /* Two-column responsive layout for candidate forms */
+    @media (min-width: 900px) {
+        .candidate-two-col .stColumn:nth-child(1) { width: 60%; }
+        .candidate-two-col .stColumn:nth-child(2) { width: 40%; }
+    }
+
+    /* Sticky right-side action panel (visual) */
+    #interview-action-panel {
+        position: fixed;
+        right: 18px;
+        top: 120px;
+        width: 260px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 12px 30px rgba(36,37,38,0.12);
+        padding: 12px 14px;
+        z-index: 9999;
+    }
+
+    #interview-action-panel h4 { margin: 6px 0 8px 0; }
+
+    /* Tidy up buttons inside panel when present */
+    #interview-action-panel .stButton button {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    /* Slight padding for the page content to avoid overlap */
+    .block-container { padding-right: 320px; }
+    </style>
     """
-    # Check if CSS has already been injected this session
-    if st.session_state.get('_css_injected', False):
-        return
     
-    try:
-        css_code = """
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-        <style>
-        /* Global font */
-        html, body, .main, .block-container {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-        }
-
-        /* Floating candidate cards / expanders */
-        div[data-testid="stExpander"] > div:first-child {
-            background: #ffffff !important;
-            border-radius: 12px !important;
-            box-shadow: 0 10px 30px rgba(36, 37, 38, 0.08) !important;
-            padding: 12px 14px !important;
-            margin-bottom: 12px !important;
-        }
-
-        /* Make form containers look like cards */
-        div[data-testid="stForm"] {
-            background: #fff !important;
-            padding: 14px !important;
-            border-radius: 10px !important;
-            box-shadow: 0 8px 22px rgba(36,37,38,0.06) !important;
-            margin-bottom: 16px !important;
-        }
-
-        /* Two-column responsive layout for candidate forms */
-        @media (min-width: 900px) {
-            .candidate-two-col .stColumn:nth-child(1) { width: 60%; }
-            .candidate-two-col .stColumn:nth-child(2) { width: 40%; }
-        }
-
-        /* Sticky right-side action panel (visual) */
-        #interview-action-panel {
-            position: fixed;
-            right: 18px;
-            top: 120px;
-            width: 260px;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 12px 30px rgba(36,37,38,0.12);
-            padding: 12px 14px;
-            z-index: 9999;
-        }
-
-        #interview-action-panel h4 { margin: 6px 0 8px 0; }
-
-        /* Tidy up buttons inside panel when present */
-        #interview-action-panel .stButton button {
-            width: 100%;
-            border-radius: 8px;
-        }
-
-        /* Slight padding for the page content to avoid overlap */
-        .block-container { padding-right: 320px; }
-
-        /* Safety rule: hide any accidentally rendered CSS or code blocks */
-        pre, code { display: none !important; }
-        </style>
-        """
+    # st.html injects pure HTML/CSS without passing through Markdown
+    if hasattr(st, "html"):
+        st.html(css_code)
+    else:
         st.markdown(css_code, unsafe_allow_html=True)
-        # Mark CSS as injected for this session
-        st.session_state['_css_injected'] = True
-        # One-time safety call to hide any previously printed CSS text blocks
-        safety_css = """
-        <style> pre, code { display: none !important; } </style>
-        """
-        st.markdown(safety_css, unsafe_allow_html=True)
-    except Exception as e:
-        st.error(f"⚠️ Failed to load interview page styles: {str(e)}")
+
+    st.session_state['_css_injected'] = True
 
 
 def render_interview_page():

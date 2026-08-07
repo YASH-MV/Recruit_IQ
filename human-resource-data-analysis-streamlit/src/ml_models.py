@@ -10,6 +10,7 @@ from datetime import datetime
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+
 from sklearn.metrics import (
     classification_report,
     confusion_matrix,
@@ -29,7 +30,7 @@ class AttritionPredictor:
     def __init__(self, random_state=42):
         self.model = RandomForestClassifier(
             n_estimators=100,
-            max_depth=15,
+            max_depth=8,
             min_samples_split=10,
             min_samples_leaf=4,
             random_state=random_state,
@@ -256,10 +257,21 @@ def train_attrition_model(df: pd.DataFrame, target: str = 'Attrition',
     y = df[target].copy()
     
     # Convert target to binary (1 for "Yes"/True/1, 0 otherwise)
-    if y.dtype == 'object':  # String type
-        y = (y.str.upper() == 'YES').astype(int)
-    else:  # Numeric type
-        y = (y == 1).astype(int)
+    # Use dtype-independent string comparison to handle object, category, etc.
+    y = (y.astype(str).str.upper() == 'YES').astype(int)
+    
+    # TEMP DEBUG
+    st.write("DEBUG y dtype:", y.dtype)
+    st.write("DEBUG y value counts:", y.value_counts())
+    st.write("DEBUG target column raw values:", df[target].unique())
+
+    # Guard: model needs both classes present to train meaningfully
+    if y.nunique() < 2:
+        raise ValueError(
+            "Cannot train attrition model: the filtered data contains only one "
+            "outcome class (everyone stayed, or everyone left). "
+            "Please widen your filters so both attrition outcomes are present."
+        )
     
     # Handle missing values in features
     X = X.fillna(X.mean(numeric_only=True))

@@ -254,7 +254,11 @@ def __build_new_analysis(df):
         streamlit.info("Training Random Forest model to predict attrition risk...")
         
         # Train model
-        result = ml_models.train_attrition_model(df)
+        try:
+            result = ml_models.train_attrition_model(df)
+        except ValueError as e:
+            streamlit.warning(f"⚠️ {e}")
+            streamlit.stop()
         
         # Display metrics
         col1, col2, col3, col4 = streamlit.columns(4)

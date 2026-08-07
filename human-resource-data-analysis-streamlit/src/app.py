@@ -181,7 +181,6 @@ def render_filter_sidebar(df: pd.DataFrame) -> pd.DataFrame:
 
 def main():
     ### Inject interview page global CSS at app startup
-    inject_global_css()
     
     ### Initialize session state for page navigation
     if 'page' not in st.session_state:
