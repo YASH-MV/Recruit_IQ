@@ -16,6 +16,14 @@ import pandas as pd
 import streamlit as st
 
 
+# Must be the very first Streamlit command in the script
+st.set_page_config(
+    page_title=app_config.app_title,
+    page_icon=app_config.icon,
+    initial_sidebar_state=app_config.sidebar_state,
+    layout=app_config.layout,
+)
+
 # Inject CSS for floating button
 st.markdown("""
 <style>

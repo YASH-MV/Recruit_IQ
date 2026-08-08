@@ -10,12 +10,6 @@ from config import app_config
 
 def setup_app(config):
     """Sets up all application level configurations"""
-    streamlit.set_page_config(
-        page_title=config.app_title,
-        page_icon=config.icon,
-        initial_sidebar_state=config.sidebar_state,
-        layout=config.layout,
-    )
     __set_banner_title(banner=config.banner_image, title=config.app_title)
 
 
@@ -77,6 +71,9 @@ def show_insights(insights: List[str]):
 ### module's internal/private functions
 def __set_banner_title(banner, title):
     image = Image.open(banner)
-    image = image.resize((image.width, 150), resample=Image.Resampling.NEAREST)
-    streamlit.image(image=image)
+    target_height = 150
+    aspect_ratio = image.width / image.height
+    target_width = int(target_height * aspect_ratio)
+    image = image.resize((target_width, target_height), resample=Image.Resampling.LANCZOS)
+    streamlit.image(image=image, use_container_width=True)
     streamlit.title(title)
