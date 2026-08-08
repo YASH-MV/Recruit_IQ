@@ -1,11 +1,19 @@
 """App agnostic reusable utility functionality"""
-
+from contextlib import contextmanager
 from typing import List
 from PIL import Image
 
 import streamlit
 from streamlit_kpi import streamlit_kpi as card
 from config import app_config
+
+
+@contextmanager
+def insights_section(title="View Insights..."):
+    """Lightweight replacement for st.expander to avoid Streamlit's
+    'expanders may not be nested inside other expanders' restriction."""
+    streamlit.markdown(f"**{title}**")
+    yield
 
 
 def setup_app(config):

@@ -39,7 +39,7 @@ def __build_kpi_cards(df):
             __show_retrench_stats(df)
 
         ## List insights drawn wrt to objectives/questions
-        with streamlit.expander("View insights...", expanded=True):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* Rate of promotion is way short of the stipulated minimum "
@@ -125,7 +125,7 @@ def __build_dept_promo_retrench_plots(df):
             df_retrench = data.get_dept_retrench_pct(df)
             fig = plots.plot_dept_retrench_bar(df_retrench)
             streamlit.plotly_chart(fig, use_container_width=True)
-        with streamlit.expander("View Insights...", expanded=True):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* All three departments are doing extremely poorly when it comes "
@@ -153,7 +153,7 @@ def __build_dept_promo_retrench_plots(df):
         fig = plots.plot_avg_salary_by_dept(df)
         streamlit.pyplot(fig, use_container_width=True)
         
-        with streamlit.expander("View Insights...", expanded=False):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* Compare average salaries across departments to identify potential compensation gaps",

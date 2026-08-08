@@ -139,7 +139,7 @@ def __build_attrition_plots(df):
                 )
         utils.sep()
 
-        with streamlit.expander("View Insights...", expanded=True):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* Overall attrition rate is > 16%, well above the stipulated max"
@@ -181,7 +181,7 @@ def __build_new_analysis(df):
         fig = plots.plot_avg_salary_by_dept(df)
         streamlit.pyplot(fig, use_container_width=True)
         
-        with streamlit.expander("View Insights...", expanded=False):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* Compare average salaries across departments to identify potential compensation gaps",
@@ -205,7 +205,7 @@ def __build_new_analysis(df):
         fig = plots.plot_attrition_rate_by_dept(df)
         streamlit.pyplot(fig, use_container_width=True)
         
-        with streamlit.expander("View Insights...", expanded=False):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* Monitor department-level attrition trends to identify problem areas",
@@ -229,7 +229,7 @@ def __build_new_analysis(df):
         fig = plots.plot_correlation_heatmap(df)
         streamlit.pyplot(fig, use_container_width=True)
         
-        with streamlit.expander("View Insights...", expanded=False):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* Strong positive/negative correlations can reveal hidden relationships in the data",
@@ -327,7 +327,7 @@ def __build_new_analysis(df):
         
         streamlit.pyplot(fig, use_container_width=True)
         
-        with streamlit.expander("View Insights...", expanded=False):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     f"* Model achieved {result['accuracy']:.1%} accuracy on test data",

@@ -58,13 +58,13 @@ def __build_kpi_cards(df: pd.DataFrame):
         __show_emp_count_card(df)
 
         ## List insights drawn wrt to objectives/questions
-        with streamlit.expander("View insights..."):
-            utils.show_insights(
-                [
-                    "* No vast disparity exists between the 'Male' and 'Female' employee populations. "
-                    + "However, there is a scope to increase the hiring of female employees.",
-                ]
-            )
+        streamlit.markdown("**View insights...**")
+        utils.show_insights(
+            [
+                "* No vast disparity exists between the 'Male' and 'Female' employee populations. "
+                + "However, there is a scope to increase the hiring of female employees.",
+            ]
+        )
 
 
 def __show_emp_count_card(df):
@@ -136,7 +136,7 @@ def __build_age_plots(df: pd.DataFrame):
             fig_age_box = plots.plot_age_marital_status_box(df)
             streamlit.plotly_chart(fig_age_box, use_container_width=True)
         ### List insights drawn wrt to objectives/questions
-        with streamlit.expander("View insights...", expanded=True):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* The median employee age is 36 yrs, where the minimum is 18 yrs, "
@@ -185,7 +185,7 @@ def __build_dept_plots(df: pd.DataFrame):
             utils.sep()
             fig_dept_curr_mgr = plots.plot_dept_curr_mgr_scatter(df)
             streamlit.plotly_chart(fig_dept_curr_mgr, use_container_width=True)
-        with streamlit.expander("View insights..."):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* By far, R&D is the largest department, employing 65% of the workforce, "
@@ -227,7 +227,7 @@ def __build_exp_plots(df: pd.DataFrame):
             annot_text = __get_pct_at_cmp_annot_text(pct_at_cmp)
             fig_plot_cmp_work_exp = plots.plot_cmp_work_exp_scatter(df, annot_text)
             streamlit.plotly_chart(fig_plot_cmp_work_exp, use_container_width=True)
-        with streamlit.expander("View insights...", expanded=True):
+        with utils.insights_section():
             utils.show_insights(
                 [
                     "* There is a good mix of experience, however around 75 percent of workforce "
