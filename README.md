@@ -10,7 +10,7 @@ pinned: false
 ---
 # Human Resource Analysis
 In this `Data Analysis` project, we examine raw HR data to learn more about how organizational policies influence employee behaviors such as `attrition` and `job-satisfaction` plus staff `promotions` and `layoffs`. The company's human resources policies shall then be amended based on the insights obtained.
-
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Hugging_Face-blue?style=for-the-badge)](https://huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit)
 
 ## Features
 ⚡Multipage Interactive Dashboard  
@@ -126,7 +126,7 @@ To run (and modify) the application locally follow below steps...
 ## Contact Me
 [![email](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:yashraj64004@gmail.com)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yash-raj-b8798a285/)
-
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Hugging_Face-blue?style=for-the-badge)](https://huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit)
 
 [Back To The Top](#human-resource-analysis)
 
