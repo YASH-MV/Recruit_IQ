@@ -1,4 +1,4 @@
-# Human Resource Analysis
+# RecruitIQ
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Hugging_Face-blue?style=for-the-badge)](https://huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit)
 
@@ -120,4 +120,4 @@ To run (and modify) the application locally follow below steps...
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yash-raj-b8798a285/)
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Hugging_Face-blue?style=for-the-badge)](https://huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit)
 
-[Back To The Top](#human-resource-analysis)
+[Back To The Top](#recruitiq)
