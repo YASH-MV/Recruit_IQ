@@ -1,16 +1,8 @@
----
-title: Human Resource Data Analysis Streamlit
-emoji: 🏢
-colorFrom: red
-colorTo: pink
-sdk: streamlit
-sdk_version: 1.27.1
-app_file: src/app.py
-pinned: false
----
 # Human Resource Analysis
-In this `Data Analysis` project, we examine raw HR data to learn more about how organizational policies influence employee behaviors such as `attrition` and `job-satisfaction` plus staff `promotions` and `layoffs`. The company's human resources policies shall then be amended based on the insights obtained.
+
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Hugging_Face-blue?style=for-the-badge)](https://huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit)
+
+In this `Data Analysis` project, we examine raw HR data to learn more about how organizational policies influence employee behaviors such as `attrition` and `job-satisfaction` plus staff `promotions` and `layoffs`. The company's human resources policies shall then be amended based on the insights obtained.
 
 ## Features
 ⚡Multipage Interactive Dashboard  
@@ -108,7 +100,7 @@ This dashboard looks at the company's capacity for employee retention and determ
 
 ## How To Use
 ### Read-only direct access via the web (Recommended):
-and explore the fully functional interactive report. <br><br>
+Click the **🚀 Live Demo** badge above and explore the fully functional interactive report. <br><br>
 
 ### Run the application locally:
 To run (and modify) the application locally follow below steps...
@@ -129,5 +121,3 @@ To run (and modify) the application locally follow below steps...
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Hugging_Face-blue?style=for-the-badge)](https://huggingface.co/spaces/Yashraj64004/human-resource-data-analysis-streamlit)
 
 [Back To The Top](#human-resource-analysis)
-
-
