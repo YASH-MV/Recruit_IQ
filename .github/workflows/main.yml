@@ -21,15 +21,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Ensure Git LFS is available
           git lfs install
 
-          # Split the subfolder into its own branch
+          # Split the subfolder into its own branch (still has full history)
           SPLIT_SHA=$(git subtree split --prefix human-resource-data-analysis-streamlit)
-          git branch hf-deploy $SPLIT_SHA
-          git checkout hf-deploy
+          git branch hf-src $SPLIT_SHA
+          git checkout hf-src
 
-          # Convert binary files to Git LFS on this branch (rewrites history for this disposable branch only)
+          # Create a fresh orphan branch containing only the CURRENT files,
+          # with no historical baggage (avoids old broken/missing LFS blobs)
+          git checkout --orphan hf-deploy
+          git add -A
+          git commit -m "Deploy snapshot"
+
+          # Now migrate binaries to LFS on this single clean commit
           git lfs migrate import --include="*.png,*.jpg,*.jpeg,*.pkl" --everything
 
           # Push to Hugging Face
