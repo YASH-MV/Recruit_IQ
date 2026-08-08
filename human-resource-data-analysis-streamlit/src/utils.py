@@ -75,5 +75,5 @@ def __set_banner_title(banner, title):
     aspect_ratio = image.width / image.height
     target_width = int(target_height * aspect_ratio)
     image = image.resize((target_width, target_height), resample=Image.Resampling.LANCZOS)
-    streamlit.image(image=image, use_container_width=True)
+    streamlit.image(image=image)
     streamlit.title(title)
